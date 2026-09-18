@@ -33,9 +33,20 @@
             display: block;
             margin: 20px auto;
         }
+        .image-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .image-grid img {
+            max-width: 48%; /* Keeps two images side-by-side on desktop */
+            margin: 0;
+        }
         .video-container {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            padding-bottom: 56.25%;
             height: 0;
             overflow: hidden;
             margin: 20px 0;
@@ -57,6 +68,13 @@
             color: #7f8c8d;
             border-top: 1px solid #ddd;
         }
+
+        /* Makes the two images stack on top of each other on mobile phones */
+        @media (max-width: 600px) {
+            .image-grid img {
+                max-width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -70,7 +88,6 @@
     <section>
         <h2>Introduction</h2>
         <p>The "Black Pearl" is a fully autonomous rover system designed to navigate hazardous terrain, identify targets, and safely retrieve payloads. Developed for the cosMotron 2025 virtual autonomous rover challenge, this project successfully secured the championship by demonstrating advanced computer vision, inverse kinematics, and robust mechanical design.</p>
-        <!-- The arena image goes here -->
         <img src="arena.jpg" alt="Simulation Arena in Webots">
     </section>
 
@@ -98,7 +115,10 @@
             <li><strong>Dynamic Stabilizer Legs:</strong> Auto-deploy before the arm sequence begins to prevent chassis tip-over during heavy lifting.</li>
             <li><strong>Secure Payload Compartment:</strong> Retractable cover design remains sealed during transport and reveals only upon reaching the destination.</li>
         </ul>
-        <img src="mechanics.jpg" alt="Mechanical Arm and Stabilizer Legs">
+        <div class="image-grid">
+            <img src="mechanics1.jpg" alt="Robotic Arm Kinematics Upward">
+            <img src="mechanics2.jpg" alt="Robotic Arm Kinematics Downward">
+        </div>
     </section>
 
     <section>
@@ -109,7 +129,10 @@
             <li><strong>Heuristics:</strong> If Left_Area < Right_Area → Turn Left.</li>
             <li><strong>Blind Drive Mode:</strong> Temporarily ignores visual noise after a decision is made to clear the obstacle.</li>
         </ul>
-        <img src="vision.jpg" alt="Computer Vision Rock Contour Detection">
+        <div class="image-grid">
+            <img src="vision1.jpg" alt="Computer Vision Rock Contour Detection 1">
+            <img src="vision2.jpg" alt="Computer Vision Rock Contour Detection 2">
+        </div>
     </section>
 
     <section>
